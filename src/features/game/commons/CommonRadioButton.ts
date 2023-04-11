@@ -190,6 +190,7 @@ class CommonRadioButton extends Phaser.GameObjects.Container {
     }
     return Constants.nullInteractionId;
   }
+
 }
 
 export default CommonRadioButton;
