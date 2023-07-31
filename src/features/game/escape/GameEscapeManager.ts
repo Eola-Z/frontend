@@ -5,6 +5,9 @@ import { screenCenter, screenSize } from '../commons/CommonConstants';
 import CommonSlider from '../commons/CommonSlider';
 import { IBaseScene, IGameUI } from '../commons/CommonTypes';
 import { Layer } from '../layer/GameLayerTypes';
+import CombinationLockPuzzle from '../minigame/CombinationLockPuzzle';
+import LightSwitchPuzzle from '../minigame/LightSwitchPuzzle';
+import PipePuzzle from '../minigame/PipePuzzle';
 import { GamePhaseType } from '../phase/GamePhaseTypes';
 import SourceAcademyGame, { GameType } from '../SourceAcademyGame';
 import { createButton } from '../utils/ButtonUtils';
@@ -107,6 +110,50 @@ class GameEscapeManager implements IGameUI {
           buttonPositions[index][1] + EscapeConstants.button.y,
           button.callback
         )
+      )
+    );
+
+    // Add minigame elements
+    escapeMenuContainer.add(
+      new LightSwitchPuzzle(
+        this.scene,
+        4,
+        4,
+        300,
+        300,
+        100,
+        100
+      )
+    );
+
+    escapeMenuContainer.add(
+      new CombinationLockPuzzle(
+        this.scene,
+        [1, 1, 0, 1],
+        400,
+        150,
+        200,
+        400
+      )
+    );
+
+    escapeMenuContainer.add(
+      new PipePuzzle(
+        this.scene,
+        [
+          [{up: true, down: false, left: true, right: false, immutable: false}, {up: true, down: true, left: false, right: true, immutable: true}],
+          [{up: true, down: false, left: true, right: false, immutable: false}, {up: true, down: true, left: false, right: false, immutable: false}],
+        ],
+        300,
+        300,
+        400,
+        200,
+        0,
+        0,
+        0,
+        1,
+        1,
+        3
       )
     );
 
